@@ -1,0 +1,30 @@
+<%= form_tag posts_path, :method => "get",:id=> "theForm",:class=> "pull-right" do %>
+    <%= text_field_tag :query, params[:query], id: "navbar-search-input", class: 'form-control', placeholder: 'Search Post Title.....'%>
+<% end %>
+
+
+<%= form_tag dropdown_sort_posts_path, :remote => true do %>
+  <%= select_tag(:option, options_for_select([['Title', 'title'], ['Body', 'body'], ['Created', 'created_at']], :selected => params[:option]), { :include_blank => "Sort the Post",:id=> "post_select",:class=> "btn btn-default dropdown-toggle"}) %>
+<% end %>
+
+
+
+<h1>Listing posts</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody id= "hai">
+        <%= render :partial=> "posts/post_list", :post=> @posts %>  
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path,:class=> "btn btn-primary" %>

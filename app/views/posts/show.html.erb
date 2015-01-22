@@ -1,0 +1,26 @@
+<div style:"width: 25%">
+  <h4><strong>Title:</strong></h4>
+  <%= @post.title %> <br/>
+  <h4><strong>Body:</strong></h4>
+  <%= @post.body %>
+</div><br/>
+<div class= "pull-right" id="comment_div">
+  <section class="panel panel-default">
+    <h4 class="panel-heading" id= "post_count">Comments(<%= @post.comments.length %>)</h4>
+    <div id="comments">
+      <%= render @post.comments %>
+    </div>
+  </section>
+</div>  
+  <% if can? :create, Comment%>
+    <section class="panel">
+      <h4 class="panel-title">Add a comment:</h4>
+      <%= render 'comments/form' %>
+    </section>
+  <% end %>
+
+  <% if can? :edit, @post %>
+    <%= link_to 'Edit', edit_post_path(@post), :class=>"btn btn-info" %>
+  <% end %> |
+  <%= link_to 'Back', posts_path,:class=> "btn btn-default" %>
+

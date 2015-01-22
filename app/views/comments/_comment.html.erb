@@ -1,0 +1,11 @@
+<section class="panel">
+	<h5><%= comment.title %> - <%= comment.user.email %></h5>
+	<p><%= comment.body %></p>
+		<% if can? :update, comment %>
+			<%= link_to 'Edit', edit_post_comment_path(@post,comment), :remote=> true, class: 'label label-warning lab-sx' %> |
+		<% end %>
+		<% if can? :destroy, comment %>
+			<%= link_to 'Destroy', post_comment_path(@post , comment), method: :delete,:remote=> true, data: { confirm: 'Are you sure?' }, class: 'label label-danger btn-xs' %>
+		<% end %>
+</section>
+  

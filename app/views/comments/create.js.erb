@@ -1,0 +1,16 @@
+$("ul.errors").html("")
+<% if @comment.errors.any? %>
+	<% @comment.errors.full_messages.each do |message| %>
+		$("ul.errors").append($("<li />").html("<%= message.html_safe %>"));
+  <% end %>
+<% else %>
+	$("#comments").html("<%=j render @post.comments %>");
+	$('#post_count').html('<%= escape_javascript(pluralize(@post.comments.count, 'comment')) %>');
+	$('#new_comment')[0].reset();
+<% end %>
+
+
+
+
+
+
