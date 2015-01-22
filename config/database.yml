@@ -21,3 +21,8 @@ development:
   <<: *default
   database: boostrapexdata_development
 
+production:
+  adapter: postgresql
+  database: fancyboxexheroku
+  timeout: 5000
+
