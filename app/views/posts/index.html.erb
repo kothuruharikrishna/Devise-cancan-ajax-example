@@ -16,11 +16,13 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-  <tbody id= "hai">
-    <%= render :partial=> "posts/post_list", :post=> @posts %>  
+  <tbody id= "post_index">
+    <%= render "post_list" %>  
   </tbody>
 </table>
 <br>
 <% if can? :create, Post%>
-  <%= link_to 'New Post', new_post_path,:class=> "btn btn-primary" %>
+  <%= link_to 'New Post', new_post_path, remote: true,:class=> "btn btn-primary" %>
 <% end %>
+
+<div id="post-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>

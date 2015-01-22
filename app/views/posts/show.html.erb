@@ -19,7 +19,7 @@
     </section>
   <% end %>
 
-  <% if can? :edit, @post %>
+  <% if can? :edit, Post %>
     <%= link_to 'Edit', edit_post_path(@post), :class=>"btn btn-info" %>
   <% end %> |
   <%= link_to 'Back', posts_path,:class=> "btn btn-default" %>
