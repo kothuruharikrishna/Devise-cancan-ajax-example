@@ -7,6 +7,15 @@ class PostsController < ApplicationController
   def index
     if params[:query].present?
       @posts = Post.where('title LIKE ?', "%#{params[:query]}%") 
+    elsif params[:sort].present?
+      case
+        when "title" == params[:sort]
+          @posts = Post.all.order("#{params[:sort]} asc")
+        when "body" == params[:sort]
+          @posts = Post.all.order("#{params[:sort]} asc")
+        when "created_at" == params[:sort]
+          @posts = Post.all.order("#{params[:sort]} desc")
+      end
     else
       @user = current_user
       @posts = Post.all

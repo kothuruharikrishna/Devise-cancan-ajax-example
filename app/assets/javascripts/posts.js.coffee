@@ -5,7 +5,7 @@
 $(document).ready ->
   $("#post_select").on "change", ->
     $.ajax
-      url: "/posts/dropdown_sort"
+      url: "/posts"
       type: "GET"
       dataType: "script"
       data:

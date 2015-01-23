@@ -18,11 +18,11 @@
 //= require_tree .
 
 $(function() {
-$("#navbar-search-input").autocomplete({
-    source: '/posts/autocomplete.json',
-    autoFocus:true,
-    select: function(event, ui) { 
-        $("#navbar-search-input").val(ui.item.label);
-        $("#theForm").submit(); }
-  });
+	$("#navbar-search-input").autocomplete({
+	    source: '/posts/autocomplete.json',
+	    autoFocus:true,
+	    select: function(event, ui) { 
+	        $("#navbar-search-input").val(ui.item.label);
+	        $("#theForm").submit(); }
+	  });
 });

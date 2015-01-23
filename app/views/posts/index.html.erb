@@ -2,7 +2,7 @@
     <%= text_field_tag :query, params[:query], id: "navbar-search-input", class: 'form-control', placeholder: 'Search Post Title.....'%>
 <% end %>
 
-<%= form_tag dropdown_sort_posts_path, :remote => true do %>
+<%= form_tag posts_path, :remote => true do %>
   <%= select_tag(:option, options_for_select([['Title', 'title'], ['Body', 'body'], ['Created', 'created_at']], :selected => params[:option]), { :include_blank => "Sort the Post",:id=> "post_select",:class=> "btn btn-default dropdown-toggle"}) %>
 <% end %>
 

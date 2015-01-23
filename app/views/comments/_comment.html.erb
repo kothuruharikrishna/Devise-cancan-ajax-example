@@ -1,6 +1,9 @@
 <section class="panel">
 	<h5><%= comment.title %> - <%= comment.user.email %></h5>
 	<p><%= comment.body %></p>
+	<p>
+		<div class="star-rating" data-score=<%= comment.rating %>> </div>
+	</p>
 		<% if can? :update, comment %>
 			<%= link_to 'Edit', edit_post_comment_path(@post,comment), :remote=> true, class: 'label label-warning lab-sx' %> |
 		<% end %>
@@ -8,4 +11,16 @@
 			<%= link_to 'Destroy', post_comment_path(@post , comment), method: :delete,:remote=> true, data: { confirm: 'Are you sure?' }, class: 'label label-danger btn-xs' %>
 		<% end %>
 </section>
+
+<script>
+	$('.star-rating').raty({
+		path: '/assets/',
+		readOnly: true,
+		half:true,
+		score: function() {
+		return $(this).attr('data-score');
+		}
+	});
+</script>
+
   
